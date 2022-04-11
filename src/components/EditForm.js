@@ -51,6 +51,7 @@ export default function EditForm() {
         if (id) {
             store.dispatch(updateItem(id, title, price));
             store.dispatch(toEditForm(undefined));
+            store.dispatch(clearForm());
         } else {
             store.dispatch(addItem(title, price));
             store.dispatch(clearForm());
@@ -59,9 +60,9 @@ export default function EditForm() {
 
     function filterChangeHandler(event) {
         event.preventDefault();
-        store.dispatch(updateFilter(event.target.value));
-        console.log(store.getState());
-        console.log(store.dispatch(filterItems(event.target.value)));
+        const filterInput = event.target.value;
+        store.dispatch(updateFilter(filterInput));
+        store.dispatch(filterItems(filterInput));
     }
 
     return (

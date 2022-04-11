@@ -11,7 +11,7 @@ export default function ItemsList(props) {
     function editClickHandler(event) {
         event.preventDefault();
         const clickedItemId = event.target.parentNode.parentNode.dataset.id;
-        const item = store.getState().list.filter(item => item.id === clickedItemId)[0];
+        const item = store.getState().list.items.filter(item => item.id === clickedItemId)[0];
         store.dispatch(toEditForm(item.id));
         store.dispatch(updateTitle(item.title));
         store.dispatch(updatePrice(item.price));
